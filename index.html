@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
+<title>Hamza Jratlou — CV</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0f14;
+    --accent: #00c8ff;
+    --accent2: #ff6b35;
+    --gold: #f5c842;
+    --green: #39d98a;
+    --text: #e8edf5;
+    --muted: #7a8799;
+    --border: rgba(0,200,255,0.12);
+    --card: rgba(255,255,255,0.03);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 13.5px; line-height: 1.6; }
+  body::before { content: ''; position: fixed; inset: 0; background-image: linear-gradient(rgba(0,200,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(0,200,255,0.025) 1px, transparent 1px); background-size: 40px 40px; pointer-events: none; z-index: 0; }
+  .page { position: relative; z-index: 1; max-width: 900px; margin: 40px auto; padding: 0 20px 60px; }
+  header { display: grid; grid-template-columns: 1fr auto; gap: 30px; align-items: end; padding: 48px 0 36px; border-bottom: 1px solid var(--border); margin-bottom: 40px; animation: fadeUp 0.7s ease both; }
+  .role-tag { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--accent); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 10px; opacity: 0.85; }
+  h1 { font-family: 'Syne', sans-serif; font-size: 52px; font-weight: 800; line-height: 1; letter-spacing: -0.03em; color: #fff; }
+  h1 span { color: var(--accent); }
+  .subtitle { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 600; color: var(--muted); margin-top: 8px; letter-spacing: 0.05em; }
+  .contact-block { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; }
+  .contact-item { display: flex; align-items: center; gap: 8px; font-family: 'DM Mono', monospace; font-size: 11.5px; color: var(--muted); background: var(--card); border: 1px solid var(--border); padding: 5px 12px 5px 10px; border-radius: 4px; transition: color 0.2s, border-color 0.2s; }
+  .contact-item:hover { color: var(--accent); border-color: rgba(0,200,255,0.3); }
+  .ci { width: 14px; height: 14px; color: var(--accent); flex-shrink: 0; }
+  .body-grid { display: grid; grid-template-columns: 1fr 290px; gap: 40px; align-items: start; }
+  section { margin-bottom: 34px; animation: fadeUp 0.7s ease both; }
+  .section-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .exp-card { background: var(--card); border: 1px solid var(--border); border-left: 2px solid var(--accent); padding: 16px 18px; border-radius: 0 6px 6px 0; margin-bottom: 14px; transition: border-color 0.2s, background 0.2s; }
+  .exp-card:hover { background: rgba(0,200,255,0.04); border-color: rgba(0,200,255,0.25); border-left-color: var(--accent); }
+  .exp-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 4px; gap: 12px; }
+  .exp-title { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; color: #fff; }
+  .exp-company { font-size: 12px; color: var(--accent); margin-bottom: 8px; }
+  .exp-date { font-family: 'DM Mono', monospace; font-size: 10.5px; color: var(--muted); white-space: nowrap; background: rgba(0,200,255,0.06); padding: 2px 8px; border-radius: 3px; border: 1px solid var(--border); }
+  .exp-list { list-style: none; }
+  .exp-list li { font-size: 12.5px; color: #9aacbe; padding: 2px 0 2px 14px; position: relative; line-height: 1.55; }
+  .exp-list li::before { content: '›'; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
+  .proj-card { background: var(--card); border: 1px solid rgba(57,217,138,0.15); border-left: 2px solid var(--green); padding: 12px 16px; border-radius: 0 6px 6px 0; margin-bottom: 10px; transition: background 0.2s; }
+  .proj-card:hover { background: rgba(57,217,138,0.04); }
+  .proj-title { font-family: 'Syne', sans-serif; font-size: 12.5px; font-weight: 700; color: var(--green); margin-bottom: 3px; }
+  .proj-desc { font-size: 12px; color: #8aacaa; line-height: 1.5; }
+  .skill-group { background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 14px 16px; margin-bottom: 14px; }
+  .skill-group-title { font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 9px; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .tag { font-family: 'DM Mono', monospace; font-size: 10.5px; padding: 3px 8px; border-radius: 3px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); color: #b0bec5; }
+  .tag.hi { background: rgba(0,200,255,0.08); color: #7dd8ef; border-color: rgba(0,200,255,0.18); }
+  .tag.green { background: rgba(57,217,138,0.08); color: #6ed4a4; border-color: rgba(57,217,138,0.2); }
+  .tag.orange { background: rgba(255,107,53,0.08); color: #e09070; border-color: rgba(255,107,53,0.18); }
+  .cert-item { display: flex; align-items: flex-start; gap: 8px; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 12px; color: #9aacbe; }
+  .cert-item:last-child { border-bottom: none; }
+  .cdot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 6px; }
+  .cdot.blue { background: var(--accent); }
+  .cdot.green { background: var(--green); }
+  .edu-item { padding: 10px 0; border-bottom: 1px solid var(--border); }
+  .edu-item:last-child { border-bottom: none; }
+  .edu-degree { font-family: 'Syne', sans-serif; font-size: 12.5px; font-weight: 700; color: #dce6f0; margin-bottom: 2px; }
+  .edu-school { font-size: 11.5px; color: var(--accent); margin-bottom: 2px; }
+  .edu-date { font-family: 'DM Mono', monospace; font-size: 10.5px; color: var(--muted); }
+  .lang-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 12.5px; }
+  .lang-row:last-child { border-bottom: none; }
+  .lang-name { color: #cdd8e5; font-weight: 500; }
+  .lang-level { font-family: 'DM Mono', monospace; font-size: 10.5px; color: var(--muted); background: rgba(255,255,255,0.04); padding: 2px 8px; border-radius: 3px; }
+  .thm-banner { background: linear-gradient(135deg, rgba(57,217,138,0.08), rgba(0,200,255,0.06)); border: 1px solid rgba(57,217,138,0.2); border-radius: 6px; padding: 12px 16px; margin-bottom: 10px; }
+  .thm-title { font-family: 'DM Mono', monospace; font-size: 10.5px; color: var(--green); letter-spacing: 0.12em; margin-bottom: 5px; }
+  .thm-desc { font-size: 12px; color: #8aacaa; line-height: 1.55; }
+  .print-btn { position: fixed; bottom: 28px; right: 28px; background: var(--accent); color: #000; font-family: 'DM Mono', monospace; font-size: 11.5px; font-weight: 500; padding: 9px 18px; border-radius: 4px; border: none; cursor: pointer; letter-spacing: 0.08em; z-index: 100; transition: opacity 0.2s; }
+  .print-btn:hover { opacity: 0.85; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+  section:nth-child(1) { animation-delay: 0.1s; }
+  section:nth-child(2) { animation-delay: 0.2s; }
+  section:nth-child(3) { animation-delay: 0.3s; }
+  .sidebar section:nth-child(1) { animation-delay: 0.15s; }
+  .sidebar section:nth-child(2) { animation-delay: 0.25s; }
+  .sidebar section:nth-child(3) { animation-delay: 0.35s; }
+  .sidebar section:nth-child(4) { animation-delay: 0.45s; }
+  .sidebar section:nth-child(5) { animation-delay: 0.55s; }
+  @media (max-width: 680px) {
+    h1 { font-size: 34px; }
+    .body-grid { grid-template-columns: 1fr; }
+    header { grid-template-columns: 1fr; }
+    .contact-block { align-items: flex-start; }
+  }
+  @media print {
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    body::before { display: none; }
+    body { background: #0b0f14 !important; color: #e8edf5 !important; }
+    .page { margin: 0 !important; padding: 10px 20px !important; }
+    header, section { animation: none !important; opacity: 1 !important; transform: none !important; }
+    .exp-card, .proj-card, .skill-group, .edu-item { page-break-inside: avoid; }
+    .print-btn { display: none !important; }
+    a { color: inherit !important; text-decoration: none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="name-block">
+      <div class="role-tag">// it_support_engineer.junior_sysadmin.profile</div>
+      <h1>HAMZA<br><span>JRATLOU</span></h1>
+      <div class="subtitle">IT Support Engineer &nbsp;|&nbsp; Junior Sysadmin</div>
+    </div>
+    <div class="contact-block">
+      <div class="contact-item">
+        <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        hamzajratlou2024@gmail.com
+      </div>
+      <div class="contact-item">
+        <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12 19.79 19.79 0 0 1 1.08 3.4 2 2 0 0 1 3 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9a16 16 0 0 0 5.91 5.91l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg>
+        0766 225 834
+      </div>
+      <div class="contact-item">
+        <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Ait Melloul, Agadir
+      </div>
+    </div>
+  </header>
+
+  <div class="body-grid">
+    <div class="main-col">
+
+      <section>
+        <div class="section-label">Profil</div>
+        <div style="background:var(--card);border:1px solid var(--border);border-left:2px solid var(--accent);border-radius:0 6px 6px 0;padding:14px 18px;font-size:13px;color:#9aacbe;line-height:1.7;">
+          Technicien IT polyvalent, positionné entre le support utilisateur et l'administration système junior. Expérience terrain confirmée dans le déploiement et la maintenance d'infrastructures réseau et systèmes en environnements critiques (entreprises, hôtellerie, événements sportifs internationaux). Maîtrise des réseaux Cisco, des systèmes Windows Server/Linux, de la virtualisation et des outils de sécurité. Reconnu pour sa rigueur, son autonomie et sa capacité à assurer la continuité de service tout en montant en compétences sur des missions d'administration avancées.
+        </div>
+      </section>
+
+      <section>
+        <div class="section-label">Expérience professionnelle</div>
+
+        <div class="exp-card">
+          <div class="exp-header">
+            <div>
+              <div class="exp-title">Technicien Support IT — AFCON 2025</div>
+              <div class="exp-company">Axeli — Agadir</div>
+            </div>
+            <div class="exp-date">12/2025 → 01/2026</div>
+          </div>
+          <ul class="exp-list">
+            <li>Assurance du support IT sur site lors d'un événement international à haute criticité opérationnelle (CAN 2025)</li>
+            <li>Déploiement et mise en service de points d'accès Cudy, incluant la configuration d'un lien mesh entre deux AP</li>
+            <li>Installation et configuration de 5 switches Cisco sur le réseau événementiel</li>
+            <li>Diagnostic et résolution d'incidents réseau en temps réel pour les équipes médias</li>
+            <li>Réalisation du câblage réseau structuré et sertissage de câbles RJ45</li>
+          </ul>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-header">
+            <div>
+              <div class="exp-title">Informaticien</div>
+              <div class="exp-company">Disis Maroc — Agadir</div>
+            </div>
+            <div class="exp-date">08/2025 → 10/2025</div>
+          </div>
+          <ul class="exp-list">
+            <li>Installation, configuration et maintenance de postes de travail et périphériques utilisateurs</li>
+            <li>Installation et dépannage d'imprimantes et scanners (pilotes, partage réseau, maintenance préventive)</li>
+            <li>Configuration, dépannage et maintenance de systèmes de vidéosurveillance CCTV (NVR/DVR)</li>
+            <li>Configuration de routeurs et switches Ruijie : VLANs, routage inter-VLAN</li>
+            <li>Déploiement et paramétrage de téléphones IP Grandstream intégrés au système VoIP</li>
+            <li>Mise en place de sauvegardes planifiées sous Windows Server via Cobian Backup</li>
+            <li>Interventions techniques sur systèmes d'alarme incendie, contrôle d'accès, pointage et sonorisation</li>
+          </ul>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-header">
+            <div>
+              <div class="exp-title">Technicien Réseaux &amp; Systèmes</div>
+              <div class="exp-company">Atik Maroc — Casablanca</div>
+            </div>
+            <div class="exp-date">08/2024 → 05/2025</div>
+          </div>
+          <ul class="exp-list">
+            <li>Déploiement et maintenance d'infrastructures réseau Cisco pour des clients grands comptes (Radisson Blu, Idnaco, Bosch…)</li>
+            <li>Maintenance du réseau interne de l'entreprise au sein du bureau d'études</li>
+            <li>Installation et configuration de contrôleurs WLC Cisco et de plus de 20 points d'accès Wi-Fi</li>
+            <li>Conception et implémentation de plans d'adressage VLAN (CCTV, contrôle d'accès, management, utilisateurs)</li>
+            <li>Configuration du routage inter-VLAN sur switch Layer 3 et sécurisation des équipements (SSH, hardening)</li>
+            <li>Intégration de téléphones IP Avaya au PABX et extension de solutions de vidéosurveillance NVR</li>
+            <li>Sauvegarde, restauration et audit de configurations Cisco — rédaction de rapports techniques</li>
+          </ul>
+        </div>
+
+        <div class="exp-card" style="border-left-color: var(--muted);">
+          <div class="exp-header">
+            <div>
+              <div class="exp-title">Stagiaire — Administration Réseau</div>
+              <div class="exp-company">Wilaya d'Agadir</div>
+            </div>
+            <div class="exp-date">03/2024 → 04/2024</div>
+          </div>
+          <ul class="exp-list">
+            <li>Installation et configuration d'un pare-feu pfSense avec portail captif pour le réseau invité</li>
+            <li>Participation à la configuration et au dépannage du réseau local (LAN)</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-label">Projets techniques personnels</div>
+
+        <div class="proj-card">
+          <div class="proj-title">Homelab Proxmox / ESXi</div>
+          <div class="proj-desc">Déploiement d'un serveur Proxmox pour l'hébergement de VMs et conteneurs LXC — environnement de lab complet</div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-title">Active Directory Windows Server</div>
+          <div class="proj-desc">Mise en place d'un DC complet avec GPO, intégration de postes et gestion des utilisateurs</div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-title">pfSense — Routage &amp; VPN</div>
+          <div class="proj-desc">Déploiement pfSense avec routage inter-VLAN, accès VPN sécurisé OpenVPN et règles de pare-feu avancées</div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-title">Supervision réseau — Zabbix</div>
+          <div class="proj-desc">Mise en place de la supervision réseau et serveurs avec alertes, dashboards et templates personnalisés</div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-title">GLPI + FusionInventory</div>
+          <div class="proj-desc">Déploiement ITSM complet avec inventaire automatique des actifs IT</div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-title">TrueNAS — Partage SMB centralisé</div>
+          <div class="proj-desc">Mise en place d'un NAS centralisé avec partages SMB, gestion des droits et snapshots ZFS</div>
+        </div>
+        <div class="thm-banner">
+          <div class="thm-title">// TRYHACKME — SOC Level 1 &amp; Pentest Junior</div>
+          <div class="thm-desc">Analyse d'alertes SIEM, investigation basique d'incidents, reconnaissance, exploitation contrôlée et bonnes pratiques de sécurité offensive/défensive</div>
+        </div>
+      </section>
+
+    </div>
+
+    <div class="sidebar">
+
+      <section>
+        <div class="section-label">Formation</div>
+        <div class="skill-group" style="padding:14px 16px;">
+          <div class="edu-item">
+            <div class="edu-degree">TS Administration Réseaux &amp; Systèmes</div>
+            <div class="edu-school">ISTA — Ait Melloul</div>
+            <div class="edu-date">2022 — 2024</div>
+          </div>
+          <div class="edu-item" style="border-bottom:none;">
+            <div class="edu-degree">Microsoft Azure Fundamentals</div>
+            <div class="edu-school">AZ-900 — Casablanca</div>
+            <div class="edu-date">2024</div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-label">Compétences</div>
+
+        <div class="skill-group">
+          <div class="skill-group-title">Réseaux</div>
+          <div class="skill-tags">
+            <span class="tag hi">Cisco (CCNA level)</span>
+            <span class="tag hi">VLANs / inter-VLAN</span>
+            <span class="tag hi">WLC / AP Wi-Fi</span>
+            <span class="tag">Ruijie (switches &amp; routeurs)</span>
+            <span class="tag">OSPF (lab)</span>
+            <span class="tag">Switching L2/L3</span>
+            <span class="tag">RJ45 / câblage</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-title">Systèmes</div>
+          <div class="skill-tags">
+            <span class="tag hi">Windows Server / AD</span>
+            <span class="tag hi">Linux (serveur)</span>
+            <span class="tag hi">Proxmox / ESXi</span>
+            <span class="tag">TrueNAS / SMB</span>
+            <span class="tag">GLPI</span>
+            <span class="tag">Cobian Backup</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-title">Sécurité</div>
+          <div class="skill-tags">
+            <span class="tag hi">pfSense / Fortigate</span>
+            <span class="tag hi">Wazuh (SIEM)</span>
+            <span class="tag hi">Splunk</span>
+            <span class="tag">IDS / IPS</span>
+            <span class="tag">EDR</span>
+            <span class="tag">OpenVPN / SSL VPN</span>
+            <span class="tag">Nessus / OpenVAS</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-title">Cloud &amp; Monitoring</div>
+          <div class="skill-tags">
+            <span class="tag hi">Azure (AZ-900)</span>
+            <span class="tag">Zabbix</span>
+            <span class="tag">Wireshark</span>
+            <span class="tag">SSH</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-title">Matériel &amp; Support</div>
+          <div class="skill-tags">
+            <span class="tag orange">CCTV / NVR / DVR</span>
+            <span class="tag orange">Contrôle d'accès</span>
+            <span class="tag orange">VoIP Avaya / Grandstream</span>
+            <span class="tag">Imprimantes &amp; scanners</span>
+            <span class="tag">Support à distance</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-title">Scripting</div>
+          <div class="skill-tags">
+            <span class="tag green">Python</span>
+            <span class="tag green">SQL</span>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-label">Certifications</div>
+        <div class="skill-group" style="padding:14px 16px;">
+          <div class="cert-item"><div class="cdot blue"></div>Microsoft Azure Fundamentals (AZ-900)</div>
+          <div class="cert-item"><div class="cdot green"></div>TryHackMe — SOC Level 1</div>
+          <div class="cert-item"><div class="cdot green"></div>TryHackMe — Pentest Junior</div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-label">Langues</div>
+        <div class="skill-group" style="padding:14px 16px;">
+          <div class="lang-row">
+            <span class="lang-name">Arabe</span>
+            <span class="lang-level">Maternelle</span>
+          </div>
+          <div class="lang-row">
+            <span class="lang-name">Anglais</span>
+            <span class="lang-level">Conversationnel</span>
+          </div>
+          <div class="lang-row" style="border-bottom:none;">
+            <span class="lang-name">Français</span>
+            <span class="lang-level">Professionnel</span>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-label">Qualités</div>
+        <div class="skill-group" style="padding:14px 16px;">
+          <div class="skill-tags">
+            <span class="tag">Résolution de problèmes</span>
+            <span class="tag">Curiosité &amp; autonomie</span>
+            <span class="tag">Adaptabilité</span>
+            <span class="tag">Rigueur terrain</span>
+            <span class="tag">Continuité de service</span>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<button class="print-btn" onclick="window.print()">⎙ Exporter en PDF</button>
+
+</body>
+</html>
